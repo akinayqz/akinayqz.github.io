@@ -1,0 +1,274 @@
+/*
+  Cactus colour themes for Rewired.
+  Palettes come from the original Hexo/Hugo Cactus theme ("dark" and "white").
+  Rewired's colour names are kept so its CSS works unchanged; each is mapped to a Cactus role:
+    --pink   -> primary accent (page titles, active nav, hover)   Cactus accent-1
+    --cyan   -> links                                             Cactus link
+    --purple -> section headings                                  Cactus accent-2
+    --green  -> dates, prompts                                    Cactus quote
+*/
+
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #1d1f21;
+  --bg-deep: #17181a;
+  --bg-soft: #232528;
+  --line: rgba(144, 141, 141, 0.3);
+
+  --text: #c9cacc;
+  --muted: #6f6d6d;
+  --muted-soft: #908d8d;
+
+  --pink: #2bbc8a;
+  --cyan: #d480aa;
+  --purple: #eeeeee;
+  --green: #ccffb6;
+  --yellow: #cccccc;
+  --orange: #f0c674;
+  --red: #cc6666;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #ffffff;
+  --bg-deep: #fafafa;
+  --bg-soft: #f2f2f2;
+  --line: rgba(102, 102, 102, 0.25);
+
+  --text: #383838;
+  --muted: #8c8c8c;
+  --muted-soft: #666666;
+
+  --pink: #2bbc8a;
+  --cyan: #d480aa;
+  --purple: #383838;
+  --green: #2bbc8a;
+  --yellow: #383838;
+  --orange: #c18401;
+  --red: #cc2a41;
+}
+
+/* Cactus uses a flat background instead of Rewired's gradient */
+body {
+  background: var(--bg);
+  transition:
+    background-color 300ms ease-in-out,
+    color 300ms ease-in-out;
+}
+
+header {
+  border-bottom-color: var(--line);
+}
+
+/* Neon glows and CRT scanlines only suit the dark theme */
+:root[data-theme="light"] body::before {
+  display: none;
+}
+
+:root[data-theme="light"] * {
+  text-shadow: none !important;
+}
+
+/* Keep code blocks on the theme background rather than the syntax style's own */
+.page__content pre.chroma,
+.page__content .highlight pre {
+  background: var(--bg-soft);
+}
+
+/* Theme toggle */
+
+.topbar__actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 1rem;
+}
+
+.theme-toggle {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 140ms ease;
+}
+
+.theme-toggle:hover {
+  color: var(--pink);
+}
+
+.theme-toggle i {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+
+:root[data-theme="dark"] .theme-toggle__sun,
+:root[data-theme="light"] .theme-toggle__moon {
+  opacity: 0;
+  transform: scale(0);
+}
+
+@media (max-width: 780px) {
+  .topbar__inner {
+    position: relative;
+  }
+
+  .topbar__menu {
+    padding-right: 2.5rem;
+  }
+
+  .topbar__actions {
+    position: absolute;
+    top: -0.35rem;
+    right: 0;
+  }
+}
+
+/* Home photo, framed as a terminal window (layouts/home.html) */
+
+.home-hero--with-photo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.photo-window {
+  width: 15rem;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg-soft);
+  overflow: hidden;
+}
+
+.photo-window__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0.65rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted-soft);
+  font-size: 0.78rem;
+}
+
+.photo-window__dots {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.photo-window__dots i {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.photo-window__dots i:first-child {
+  background: var(--cyan);
+}
+
+.photo-window__dots i:last-child {
+  background: var(--pink);
+}
+
+.photo-window__frame {
+  position: relative;
+  aspect-ratio: 1;
+}
+
+/* Tinted photo (used when there is no data/portrait.json) */
+
+.photo-window__frame--tint img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+  transition: filter 300ms ease;
+}
+
+/* Accent tint, faded out on hover to reveal the original colours */
+.photo-window__frame--tint::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--pink);
+  mix-blend-mode: color;
+  opacity: 0.55;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.photo-window:hover .photo-window__frame--tint img {
+  filter: none;
+}
+
+.photo-window:hover .photo-window__frame--tint::after {
+  opacity: 0;
+}
+
+/* Text-art portrait (scripts/portrait.py), cross-fading to the photo on hover */
+
+.photo-window__frame--text {
+  container-type: inline-size;
+  display: grid;
+  place-items: center;
+}
+
+.portrait {
+  margin: 0;
+  /* Fira Code glyphs are 0.6em wide, so this makes --cols characters fill the frame */
+  font-size: calc(100cqi / (var(--cols) * 0.6));
+  line-height: 1;
+  color: var(--pink);
+  user-select: none;
+  transition: opacity 300ms ease;
+}
+
+:root[data-theme="dark"] .portrait--light,
+:root[data-theme="light"] .portrait--dark {
+  display: none;
+}
+
+.photo-window__frame--text img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.photo-window:hover .portrait {
+  opacity: 0;
+}
+
+.photo-window:hover .photo-window__frame--text img {
+  opacity: 1;
+}
+
+@media (max-width: 780px) {
+  .home-hero--with-photo {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .photo-window {
+    order: -1;
+    width: 11rem;
+  }
+}
