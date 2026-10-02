@@ -22,5 +22,5 @@ document.querySelectorAll(".theme-toggle").forEach((button) => {
   });
 });
 
-// Follow OS changes, as the Astro Cactus theme does
+// Follow OS theme changes
 lightModePref.addEventListener("change", (e) => setTheme(e.matches ? "light" : "dark", true));
