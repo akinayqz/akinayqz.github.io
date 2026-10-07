@@ -5,7 +5,7 @@ description: "A test post for formulas, technical tables, code blocks, and mixed
 tags: ["math", "katex", "technical", "demo"]
 categories: ["testing"]
 math: true
-draft: false
+draft: true
 ---
 
 This post tests mathematical expressions, technical tables, and documentation-like content.

@@ -1,8 +1,10 @@
-{{- /* Overrides themes/rewired/layouts/_partials/nav.html: adds the light/dark toggle and hides the language selector on single-language sites. */ -}}
+{{- /* Overrides themes/rewired/layouts/_partials/nav.html: adds the light/dark toggle, hides the language selector on single-language sites, and hides menu links to empty sections. */ -}}
 <nav class="topbar" aria-label="Main navigation">
 	<div class="topbar__inner">
 		<ul class="topbar__menu">
 			{{ range site.Menus.main }}
+				{{- /* Hide links to sections with nothing published yet, e.g. the blog before the first post (unless the section sets alwaysInMenu) */}}
+				{{ with .Page }}{{ if and .IsSection (not .RegularPagesRecursive) (not .Params.alwaysInMenu) }}{{ continue }}{{ end }}{{ end }}
 				{{ $isActive := false }}
 
 				{{ if $.IsMenuCurrent "main" . }}

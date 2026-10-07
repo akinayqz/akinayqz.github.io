@@ -136,6 +136,28 @@ header {
   }
 }
 
+/* Tagline: draw the "|" as a border so it spans every line of a multi-line bio */
+
+.home-hero__tagline {
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--cyan);
+}
+
+.home-hero__pipe {
+  display: none;
+}
+
+/* Give every home section the same space above its heading. The first one follows the social
+   links (1.4rem margin + 1rem section padding); later ones only had the 1rem padding. */
+.home-section + .home-section {
+  padding-top: 2.4rem;
+}
+
+/* The footer draws its own top border, so drop the last section's bottom border to avoid a double line */
+#main-content > .home-section:last-child {
+  border-bottom: 0;
+}
+
 /* Home photo, framed as a terminal window (layouts/home.html) */
 
 .home-hero--with-photo {

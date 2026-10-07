@@ -1,0 +1,23 @@
+{{- /* Home section: latest posts, hidden until the first post is published. Context: dict "accent" (bool). */ -}}
+{{ $posts := first 4 (where site.RegularPages "Section" "posts") }}
+
+{{ if $posts }}
+<section class="home-section home-posts" aria-labelledby="latest-posts-title">
+	<h2 id="latest-posts-title" class="section-title{{ if .accent }} section-title--pink{{ end }}">
+		{{ i18n "latest_posts" }}
+	</h2>
+
+	<div class="post-list">
+		{{ range $posts }}
+			<a class="post-row" href="{{ .RelPermalink }}">
+				<time class="post-row__date" datetime="{{ .Date.Format "2006-01-02" }}">
+					{{ .Date.Format "2006-01-02" }}
+				</time>
+				<span class="post-row__separator" aria-hidden="true">|</span>
+				<span class="post-row__title">{{ .Title }}</span>
+				<span class="post-row__arrow" aria-hidden="true">→</span>
+			</a>
+		{{ end }}
+	</div>
+</section>
+{{ end }}

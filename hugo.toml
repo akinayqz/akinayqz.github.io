@@ -1,7 +1,9 @@
 baseURL = "https://akinayqz.github.io/"
-title = "akinayqz"
+title = "akina"
 theme = "rewired"
-locale = "en-US"
+locale = "en-gb"
+# Show tags as written (e.g. "fsl", not "Fsl")
+capitalizeListTitles = false
 
 [taxonomies]
   tag = "tags"
@@ -11,16 +13,31 @@ locale = "en-US"
   pagerSize = 10
 
 [params]
-  author = "Your name"
+  # Home page sections below the intro, in display order. Delete a name to hide that section,
+  # or reorder the list to move sections around. Available: "projects", "publications", "posts".
+  # A section with nothing to show (e.g. posts before your first post) is skipped automatically.
+  homeSections = ["projects", "publications", "posts"]
+
+  author = "Ying-Qiu Zheng"
   # Photo shown in a terminal window on the home page. Path is relative to assets/; remove to hide it.
-  photo = "images/me.jpg"
-  photoAlt = "Photo of me"
-  descriptionLines = [
-    "A short description of your website,",
-    "your work, projects, or interests.",
-  ]
-  tagline = "I write on the [blog](/posts/), share [projects](/projects/), and keep a simple personal website."
+  # photo = "images/me.jpg"
+  #photoAlt = "Photo of me"
+  # descriptionLines = [
+  #   "I am a postdoctoral researcher at the Oxford Centre for Integrative Neuroimaging (OxCIN), University of Oxford.",
+  #   "I studied math and stats as an undergraduate and received my PhD in MRI analysis. Throughout my PhD and postdoc, my work has centred on methods development for multimodal MRI analysis and domain adaptation, with a particular focus on clinical translation.",
+  #   "Specifically, I work on bridging the gap between research methods and noisy, low-quality clinical datasets. This includes helping establish reliable and scalable clinical pipelines that build on research grade multimodal datasets.",
+  #   "My experience spans a wide range of populations, from newborns to the elderly, in health and disease, as well as multiple species. For more details, check below."
+  # ]
+  tagline = "I am a postdoctoral researcher at the Oxford Centre for Integrative Neuroimaging (OxCIN), University of Oxford. I studied math and stats as an undergraduate and received my PhD in MRI analysis. Throughout my PhD and postdoc, my work has centred on methods development for multimodal MRI analysis and domain adaptation, with a particular focus on clinical translation. Specifically, I work on bridging the gap between research methods and noisy, low-quality clinical datasets. This includes helping establish reliable and scalable clinical pipelines that build on research grade multimodal datasets. My experience spans a wide range of populations, from newborns to the elderly, in health and disease, as well as multiple species. More details are below." 
+  #"My work spans populations from newborns to the elderly, in health and disease, as well as multiple species. Recently, I have developed a growing interest in foundation models of the human brain development across lifespan."
   blogPageSize = 5
+
+# comment out to hide publications
+[params.publications]
+  # Names shown in bold in author lists (data/publications.yaml)
+  highlight = ["YQ Zheng"]
+  # Number of selected publications on the home page
+  homeCount = 5
 
 [params.footer]
   text = 'akinayqz.github.io // made with ♥ and [Hugo](https://gohugo.io/) // theme [rewired](https://github.com/RigleGit/rewired)'
@@ -39,8 +56,18 @@ locale = "en-US"
 
 [[params.social]]
   name = "Email"
-  url = "mailto:hello@example.org"
+  url = "mailto:akinayqz@gmail.com"
   icon = "fa-regular fa-envelope"
+
+[[params.social]]
+  name = "LinkedIn"
+  url = "https://www.linkedin.com/in/akinayqz/"
+  icon = "fa-brands fa-linkedin"
+
+[[params.social]]
+  name = "Google Scholar"
+  url = "https://scholar.google.com/citations?user=NLs-BRQAAAAJ"
+  icon = "fa-brands fa-google-scholar"
 
 [[menus.main]]
   name = "home"
@@ -48,13 +75,18 @@ locale = "en-US"
   weight = 10
 
 [[menus.main]]
-  name = "blog"
-  pageRef = "/posts"
+  name = "projects"
+  pageRef = "/projects"
   weight = 20
 
 [[menus.main]]
-  name = "projects"
-  pageRef = "/projects"
+  name = "publications"
+  pageRef = "/publications"
+  weight = 25
+
+[[menus.main]]
+  name = "blog"
+  pageRef = "/posts"
   weight = 30
 
 [[menus.main]]

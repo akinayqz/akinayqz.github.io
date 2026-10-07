@@ -4,7 +4,7 @@ date: 2026-05-10
 description: "A test post for lists, tables, quotes, code blocks, links, and base typography."
 tags: ["markdown", "design", "demo"]
 categories: ["testing"]
-draft: false
+draft: true
 ---
 
 This post exists to test how the theme behaves with typical technical blog content.

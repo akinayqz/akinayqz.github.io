@@ -1,0 +1,17 @@
+{{- /* Home section: selected publications from data/publications.yaml, in the same list style as /publications/. Context: dict "accent" (bool). */ -}}
+{{- $accent := .accent }}
+{{ with where (hugo.Data.publications | default slice) "selected" true }}
+<section class="home-section home-publications" aria-labelledby="publications-title">
+	<h2 id="publications-title" class="section-title{{ if $accent }} section-title--pink{{ end }}">{{ i18n "selected_publications" }}</h2>
+
+	<div class="pub-list">
+		{{- range first (site.Params.publications.homeCount | default 5) . }}
+			{{ partial "publication/row.html" (dict "pub" . "showYear" true) }}
+		{{- end }}
+	</div>
+
+	{{ with site.GetPage "/publications" }}
+		<a class="home-section__more" href="{{ .RelPermalink }}">{{ i18n "all_publications" }} <span aria-hidden="true">→</span></a>
+	{{ end }}
+</section>
+{{ end }}

@@ -1,0 +1,125 @@
+# Publications, listed on /publications/ (layouts/publications/section.html).
+# Entries with `selected: true` also appear on the home page (newest first).
+#
+# Fields:
+#   title, authors, venue, year   required
+#   selected                      optional, show on the home page
+#   links                         optional, any of: doi, arxiv, pdf, code, data, url
+#                                 (the title links to the first of doi / arxiv / url / pdf)
+#
+# Author names listed under params.publications.highlight in hugo.toml are shown in bold.
+
+- title: "PathFinder: Joint Decompositions of Linked Multimodal Datasets"
+  authors: "YQ Zheng, A Fung, SM Smith, RB Mars, S Jbabdi"
+  venue: "arXiv preprint"
+  year: 2026
+  selected: true
+  links:
+    arxiv: "https://arxiv.org/abs/2608.14951"
+
+- title: "An image quality transfer approach for localising deep brain stimulation targets"
+  authors: "YQ Zheng, H Akram, Z Li, SM Smith, S Jbabdi"
+  venue: "Imaging Neuroscience"
+  year: 2025
+  selected: true
+  links:
+    doi: "https://doi.org/10.1162/imag.a.1005"
+
+- title: "In vivo and in silico alpha-synuclein propagation dynamics: The role of genotype, epicentre, and connectivity"
+  authors: "S Tullo, JSH Park, S Rahayel, D Gallino, M Park, K Mar, YQ Zheng, et al."
+  venue: "bioRxiv preprint"
+  year: 2025
+  links:
+    doi: "https://doi.org/10.1101/2025.07.18.665565"
+
+- title: "Imbalanced Semi-Supervised Learning via Label Refinement and Threshold Adjustment"
+  authors: "Z Li, YQ Zheng, C Chen, S Jbabdi"
+  venue: "arXiv preprint"
+  year: 2024
+  links:
+    arxiv: "https://arxiv.org/abs/2407.05370"
+
+- title: "A transfer learning approach to localising a deep brain stimulation target"
+  authors: "YQ Zheng, H Akram, SM Smith, S Jbabdi"
+  venue: "MICCAI"
+  year: 2023
+  selected: true
+  links:
+    doi: "https://doi.org/10.1007/978-3-031-43996-4_17"
+
+- title: "Predicting longitudinal brain atrophy in Parkinson's disease using a Susceptible-Infected-Removed agent-based model"
+  authors: "A Abdelgawad, S Rahayel, YQ Zheng, C Tremblay, A Vo, B Mišić, et al."
+  venue: "Network Neuroscience"
+  year: 2023
+  links:
+    doi: "https://doi.org/10.1162/netn_a_00296"
+
+- title: "Supervised phenotype discovery from multimodal brain imaging"
+  authors: "W Gong, S Bai, YQ Zheng, SM Smith, CF Beckmann"
+  venue: "IEEE Transactions on Medical Imaging"
+  year: 2023
+  links:
+    doi: "https://doi.org/10.1109/TMI.2022.3218720"
+
+- title: "Modelling individual variations in brain structure and function using multimodal MRI"
+  authors: "YQ Zheng"
+  venue: "DPhil thesis, University of Oxford"
+  year: 2023
+
+- title: "Identifying microstructural changes in diffusion MRI; How to circumvent parameter degeneracy"
+  authors: "H Rafipoor, YQ Zheng, L Griffanti, S Jbabdi, M Cottaar"
+  venue: "NeuroImage"
+  year: 2022
+  links:
+    doi: "https://doi.org/10.1016/j.neuroimage.2022.119452"
+
+- title: "Accurate predictions of individual differences in task-evoked brain activity from resting-state fMRI using a sparse ensemble learner"
+  authors: "YQ Zheng, SR Farahibozorg, W Gong, H Rafipoor, S Jbabdi, SM Smith"
+  venue: "NeuroImage"
+  year: 2022
+  selected: true
+  links:
+    doi: "https://doi.org/10.1016/j.neuroimage.2022.119418"
+
+- title: "Brain atrophy in prodromal synucleinopathy is shaped by structural connectivity and gene expression"
+  authors: "S Rahayel, C Tremblay, A Vo, YQ Zheng, S Lehéricy, I Arnulf, M Vidailhet, et al."
+  venue: "Brain"
+  year: 2022
+  links:
+    doi: "https://doi.org/10.1093/brain/awac187"
+
+- title: "Differentially targeted seeding reveals unique pathological alpha-synuclein propagation patterns"
+  authors: "S Rahayel, B Mišić, YQ Zheng, ZQ Liu, A Abdelgawad, N Abbasi, et al."
+  venue: "Brain"
+  year: 2022
+  links:
+    doi: "https://doi.org/10.1093/brain/awab440"
+
+- title: "Network topology of the marmoset connectome"
+  authors: "ZQ Liu, YQ Zheng, B Mišić"
+  venue: "Network Neuroscience"
+  year: 2020
+  links:
+    doi: "https://doi.org/10.1162/netn_a_00159"
+
+- title: "Heritability of cortical morphology reflects a sensory-fugal plasticity gradient"
+  authors: "U Vainik, C Paquola, X Wang, YQ Zheng, B Bernhardt, B Mišić, A Dagher"
+  venue: "bioRxiv preprint"
+  year: 2020
+  links:
+    doi: "https://doi.org/10.1101/2020.11.03.366419"
+
+- title: "abagen: A toolbox for the Allen Brain Atlas genetics data"
+  authors: "R Markello, G Shafiei, YQ Zheng, B Mišić"
+  venue: "Zenodo (software)"
+  year: 2020
+  links:
+    doi: "https://doi.org/10.5281/zenodo.4091537"
+
+- title: "Local vulnerability and global connectivity jointly shape neurodegenerative disease propagation"
+  authors: "YQ Zheng, Y Zhang, Y Yau, Y Zeighami, K Larcher, B Mišić, A Dagher"
+  venue: "PLOS Biology"
+  year: 2019
+  selected: true
+  links:
+    doi: "https://doi.org/10.1371/journal.pbio.3000495"

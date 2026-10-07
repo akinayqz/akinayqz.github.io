@@ -1,0 +1,6 @@
+{{- /* Returns the author list as HTML, with names from params.publications.highlight in bold. Context: the entry. */ -}}
+{{- $authors := .authors | htmlEscape -}}
+{{- range site.Params.publications.highlight -}}
+	{{- $authors = replace $authors (. | htmlEscape) (printf "<strong>%s</strong>" (. | htmlEscape)) -}}
+{{- end -}}
+{{- return ($authors | safeHTML) -}}

@@ -1,0 +1,9 @@
+{{- /* Returns the URL the title of a publication links to: the first of doi / arxiv / url / pdf. Context: the entry. */ -}}
+{{- $links := .links | default dict -}}
+{{- $primary := "" -}}
+{{- range slice "doi" "arxiv" "url" "pdf" -}}
+	{{- if and (not $primary) (index $links .) -}}
+		{{- $primary = index $links . -}}
+	{{- end -}}
+{{- end -}}
+{{- return $primary -}}

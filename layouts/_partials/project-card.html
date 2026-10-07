@@ -1,0 +1,73 @@
+{{- /*
+	A project card, same markup as the cards in themes/rewired/layouts/projects/section.html
+	so it picks up the theme's .projects-card styles. Context: a project page.
+*/ -}}
+{{ $status := .Params.status | default "active" }}
+{{ $accent := .Params.accent | default "purple" }}
+{{ $accentValue := "" }}
+
+{{ if or (hasPrefix $accent "#") (hasPrefix $accent "rgb") (hasPrefix $accent "hsl") }}
+	{{ $accentValue = $accent }}
+{{ else }}
+	{{ $accentValue = printf "var(--%s)" $accent }}
+{{ end }}
+
+{{ $url := .Params.projectUrl | default .RelPermalink }}
+{{ $external := hasPrefix $url "http" }}
+
+<article
+	class="projects-card"
+	data-status="{{ $status }}"
+	style="--project-accent: {{ $accentValue | safeCSS }};"
+>
+	<a
+		class="projects-card__link"
+		href="{{ $url }}"
+		{{ if $external }}target="_blank" rel="noopener noreferrer"{{ end }}
+	>
+		<span class="projects-card__icon" aria-hidden="true">
+			{{ with .Params.icon }}
+				{{ if in . "fa-" }}
+					<i class="{{ . }}"></i>
+				{{ else }}
+					<span>{{ . }}</span>
+				{{ end }}
+			{{ else }}
+				<i class="fa-solid fa-cube"></i>
+			{{ end }}
+		</span>
+
+		<span class="projects-card__main">
+			<span class="projects-card__title">{{ .Title }}</span>
+
+			<span class="projects-card__description">
+				{{ with .Description }}
+					{{ . }}
+				{{ else }}
+					{{ .Summary | plainify | truncate 130 }}
+				{{ end }}
+			</span>
+
+			{{ with .Params.tags }}
+				<span class="projects-card__tags">
+					{{ range . }}
+						<span class="projects-card__tag">{{ . }}</span>
+					{{ end }}
+				</span>
+			{{ end }}
+		</span>
+
+		<span class="projects-card__meta">
+			<span class="projects-card__status projects-card__status--{{ $status }}">
+				<span class="projects-card__dot" aria-hidden="true"></span>
+				{{ i18n (printf "status_%s" $status) }}
+			</span>
+
+			<time datetime="{{ .Date.Format "2006-01-02" }}">
+				{{ .Date.Format "2006-01-02" }}
+			</time>
+		</span>
+
+		<span class="projects-card__arrow" aria-hidden="true">→</span>
+	</a>
+</article>

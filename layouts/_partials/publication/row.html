@@ -1,0 +1,26 @@
+{{- /*
+	One entry from data/publications.yaml as a compact row (used on /publications/).
+	Context: dict "pub" (the entry) "showYear" (bool, false to leave the year column blank).
+*/ -}}
+{{- $pub := .pub -}}
+{{- $links := $pub.links | default dict -}}
+
+<article class="pub-row{{ if .showYear }} pub-row--year{{ end }}">
+	<span class="pub-row__year">{{ if .showYear }}{{ $pub.year }}{{ end }}</span>
+	<div class="pub-row__body">
+		{{- with partial "publication/primary-link.html" $pub }}
+			<a class="pub-row__title" href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ $pub.title }}</a>
+		{{- else }}
+			<span class="pub-row__title">{{ $pub.title }}</span>
+		{{- end }}
+		<p class="pub-row__authors">{{ partial "publication/authors.html" $pub }}</p>
+		<p class="pub-row__meta">
+			<span class="pub-row__venue">{{ $pub.venue }}</span>
+			{{- range $name := slice "doi" "arxiv" "pdf" "code" "data" "url" }}
+				{{- with index $links $name }}
+					<a class="pub-row__link" href="{{ . }}" target="_blank" rel="noopener noreferrer">[{{ $name }}]</a>
+				{{- end }}
+			{{- end }}
+		</p>
+	</div>
+</article>

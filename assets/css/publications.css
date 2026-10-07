@@ -1,0 +1,83 @@
+/* Publication lists on the home page and /publications/ (layouts/_partials/publication/row.html) */
+
+.pub-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.pub-row {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  gap: 0.8rem;
+  align-items: baseline;
+}
+
+.pub-row__year {
+  color: var(--green);
+  white-space: nowrap;
+}
+
+.pub-row__title {
+  color: var(--text);
+  font-weight: 600;
+  transition: color 140ms ease;
+}
+
+a.pub-row__title:hover {
+  color: var(--pink);
+}
+
+.pub-row__authors,
+.pub-row__meta {
+  margin: 0.15rem 0 0;
+  color: var(--muted-soft);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.pub-row__authors strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.pub-row__venue {
+  font-style: italic;
+}
+
+.pub-row__link {
+  margin-left: 0.6rem;
+  color: var(--cyan);
+}
+
+.pub-row__link:hover {
+  color: var(--pink);
+}
+
+.publications-page .generic-section__content {
+  margin-bottom: 1.6rem;
+}
+
+/* Full list: separate years with a rule */
+.publications-page .pub-row--year:not(:first-child) {
+  margin-top: 0.4rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--line);
+}
+
+.home-section__more {
+  display: inline-block;
+  margin-top: 0.9rem;
+  color: var(--cyan);
+  font-size: 0.95rem;
+}
+
+.home-section__more:hover {
+  color: var(--pink);
+}
+
+@media (max-width: 780px) {
+  .pub-row {
+    grid-template-columns: 3.2rem minmax(0, 1fr);
+    gap: 0.6rem;
+  }
+}

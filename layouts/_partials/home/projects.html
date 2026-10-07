@@ -1,0 +1,21 @@
+{{- /* Home section: projects as cards (same style as /projects/, without the status filters). Context: dict "accent" (bool). */ -}}
+{{ $allProjects := (where site.RegularPages "Section" "projects").ByDate.Reverse }}
+{{ $projects := first (site.Params.projectsHomeCount | default 4) $allProjects }}
+
+{{ if $projects }}
+<section class="home-section home-projects" aria-labelledby="projects-title">
+	<h2 id="projects-title" class="section-title{{ if .accent }} section-title--pink{{ end }}">{{ i18n "projects" }}</h2>
+
+	<div class="projects-list">
+		{{ range $projects }}
+			{{ partial "project-card.html" . }}
+		{{ end }}
+	</div>
+
+	{{ if gt (len $allProjects) (len $projects) }}
+		{{ with site.GetPage "/projects" }}
+			<a class="home-section__more" href="{{ .RelPermalink }}">{{ i18n "all_projects" }} <span aria-hidden="true">→</span></a>
+		{{ end }}
+	{{ end }}
+</section>
+{{ end }}

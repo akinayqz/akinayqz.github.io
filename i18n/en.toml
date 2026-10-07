@@ -1,0 +1,10 @@
+# Site strings added on top of themes/rewired/i18n/en.toml
+
+[selected_publications]
+other = "selected publications"
+
+[all_publications]
+other = "all publications"
+
+[all_projects]
+other = "all projects"

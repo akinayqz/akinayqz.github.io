@@ -4,7 +4,7 @@ date: 2026-05-11
 description: "Sample post to test the blog layout."
 tags: ["hugo", "theme", "demo"]
 categories: ["development"]
-draft: false
+draft: true
 ---
 
 This is a sample post to test how a regular article looks.

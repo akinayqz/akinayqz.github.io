@@ -1,6 +1,6 @@
 {{- /*
 	Overrides themes/rewired/layouts/_partials/head/css.html.
-	Same bundle as the theme, plus syntax.css and cactus.css appended last. Rewired's hard-coded
+	Same bundle as the theme, plus syntax.css, cactus.css and publications.css appended last. Rewired's hard-coded
 	Dracula rgba() tints are rewritten to use the colour variables so the Cactus palettes apply everywhere.
 */ -}}
 {{- $styles := slice -}}
@@ -21,7 +21,7 @@
 	{{- $styles = $styles | append . -}}
 {{- end -}}
 
-{{- $styles = $styles | append (resources.Get "css/syntax.css") (resources.Get "css/cactus.css") -}}
+{{- $styles = $styles | append (resources.Get "css/syntax.css") (resources.Get "css/cactus.css") (resources.Get "css/publications.css") -}}
 
 {{- $tints := dict
 	"255, 121, 198" "pink"

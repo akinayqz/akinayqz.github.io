@@ -1,0 +1,30 @@
+{{- /* /publications/: the full list from data/publications.yaml, newest first, year shown once per year */ -}}
+{{ define "main" }}
+
+<section class="generic-section publications-page" aria-labelledby="section-title">
+	<header class="generic-section__header">
+		<h1 id="section-title" class="generic-section__title">
+			/{{ .Title | lower }}<span class="cursor" aria-hidden="true">_</span>
+		</h1>
+
+		{{ with .Description }}
+			<p class="generic-section__description">{{ . }}</p>
+		{{ end }}
+	</header>
+
+	{{ with .Content }}
+		<div class="generic-section__content page__content">
+			{{ . }}
+		</div>
+	{{ end }}
+
+	<div class="pub-list">
+		{{- $prevYear := 0 }}
+		{{- range hugo.Data.publications }}
+			{{ partial "publication/row.html" (dict "pub" . "showYear" (ne .year $prevYear)) }}
+			{{- $prevYear = .year }}
+		{{- end }}
+	</div>
+</section>
+
+{{ end }}
